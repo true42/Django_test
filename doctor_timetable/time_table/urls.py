@@ -4,6 +4,7 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r'timetable', views.TimetableViewSet)
+router.register(r'appointment', views.AppointmentViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

@@ -1,5 +1,8 @@
 import uuid
 from django.db import models
+import datetime
+import pandas as pd
+from django.core.exceptions import ValidationError
 
 
 class Timetable(models.Model):
@@ -7,12 +10,14 @@ class Timetable(models.Model):
     from_hour = models.TimeField(blank=True)
     to_hour = models.TimeField(blank=True)
 
+    def __str__(self):
+        return f'{self.week_day}'
+
 
 class Appointment(models.Model):
-    date_id = models.ForeignKey(Timetable, on_delete=models.SET_NULL, null=True)
+    date_id = models.ForeignKey(Timetable, related_name='appointment', on_delete=models.SET_NULL, null=True)
     patient = models.CharField(max_length=100, help_text='Patient Name')
     office = models.CharField(max_length=3, help_text='number office', null=True)
-    day_of_appointment = models.DateField()
     time_of_appointment = models.TimeField()
 
     LOAN_STATUS = (
