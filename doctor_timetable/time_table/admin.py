@@ -14,4 +14,4 @@ class TimetableAdmin(admin.ModelAdmin):
 
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
-    list_display = ('date_id', 'patient', 'office', 'time_of_appointment')
+    list_display = ('date_id', 'patient', 'office', 'time_of_appointment', 'day_of_appointment')
